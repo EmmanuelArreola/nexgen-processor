@@ -83,9 +83,7 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 		} catch (IOException e) {
 			throw new ExceptionPath("Input or Output excpetion thrown by: " + e.getMessage());
 		} catch (Exception e) {
-			e.getStackTrace();
-			e.printStackTrace();
-			// throw new ExceptionPath("Error on: " );
+			throw new ExceptionPath("Error on: " + e.getMessage());
 		}
 		return finalData.toString();
 	};
