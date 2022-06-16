@@ -3,8 +3,6 @@ package com.n3xgen.n3xgenprocessor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.n3xgen.n3xgenprocessor.service.ProcessorNodeJs;
-import com.n3xgen.n3xgenprocessor.service.ProcessorNodeJsImpl;
 
 @SpringBootApplication
 public class N3xgenProcessorApplication {
