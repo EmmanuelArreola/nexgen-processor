@@ -10,11 +10,5 @@ public class N3xgenProcessorApplication {
 	public static void main(String[] args) {
 		log.info("Main method starting");
 		 SpringApplication.run(N3xgenProcessorApplication.class, args);
-//		String data = "{\"state\":\"Karnataka\",\n"
-//				+ "\"code\":\"KA\",\n"
-//				+ "\"country\":\"India\"}";
-//		String expression = "{ 'age': state, 'name': code}";
-//		ProcessorNodeJs transformer = new ProcessorNodeJsImpl();
-//		transformer.nodeJsToJSONprocessor(data, expression);
 	}
 }

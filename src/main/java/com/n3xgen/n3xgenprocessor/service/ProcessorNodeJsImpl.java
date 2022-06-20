@@ -15,7 +15,6 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 
 	@Override
 	public String nodeJsToJSONprocessor(String payload, String expression) {
-		// StringBuffer outputPayload = new StringBuffer();
 		// Create a stream to hold the output
 		ByteArrayOutputStream finalData = new ByteArrayOutputStream();
 		log.info("Starting expression");
@@ -57,24 +56,8 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 			System.setOut(old);
 			// Show what happened
 			System.out.println("Here: " + finalData.toString());
-
 			log.info("state : " + pb.exitValue());
 			System.out.println("Process exited with: " + pb.waitFor());
-//			if (null != pb.getErrorStream()) {
-//				BufferedReader error = new BufferedReader(new InputStreamReader(pb.getErrorStream()));
-//				StringBuffer errorMsg = new StringBuffer();
-//				String str;
-//				while ((str = error.readLine()) != null)
-//					errorMsg.append(str);
-//				error.close();
-//				throw new Exception(errorMsg.toString());
-//			}
-//			BufferedReader input = new BufferedReader(new InputStreamReader(pb.getInputStream()));
-//			log.info("Final result: " + pb.getInputStream());
-//			String line;
-//			while ((line = input.readLine()) != null)
-//				outputPayload.append(line);
-//			input.close();
 			tempFile.deleteOnExit();
 		} catch (FileNotFoundException e) {
 			throw new ExceptionPath("File do not exist or is unreacheable: " + e.getMessage() + e.getStackTrace());
