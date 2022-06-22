@@ -41,8 +41,10 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 			PrintStream old = System.out;
 			// Tell Java to use your special stream
 			System.setOut(ps);
-			// Execute temp fil
+			// Execute temp file
 			Process pb = Runtime.getRuntime().exec("node " + tempFile.getAbsolutePath());
+			// Lock the thread so don't stuck
+			pb.waitFor();
 			// Saves and print final JSON
 			try (InputStream in = pb.getInputStream();) {
 				byte[] bytes = new byte[2048];
@@ -63,6 +65,8 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 			throw new ExceptionPath("File do not exist or is unreacheable: " + e.getMessage() + e.getStackTrace());
 		} catch (IOException e) {
 			throw new ExceptionPath("Input or Output excpetion thrown by: " + e.getMessage());
+		} catch (InterruptedException e) {
+			throw new ExceptionPath("Thread interrupted" + e.getMessage());
 		} catch (Exception e) {
 			throw new ExceptionPath("Error on: " + e.getMessage());
 		}
