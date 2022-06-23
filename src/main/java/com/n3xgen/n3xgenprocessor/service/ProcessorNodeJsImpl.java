@@ -1,11 +1,13 @@
 package com.n3xgen.n3xgenprocessor.service;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 import com.n3xgen.n3xgenprocessor.bean.ExceptionPath;
@@ -43,8 +45,6 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 			System.setOut(ps);
 			// Execute temp file
 			Process pb = Runtime.getRuntime().exec("node " + tempFile.getAbsolutePath());
-			// Lock the thread so don't stuck
-			pb.waitFor();
 			// Saves and print final JSON
 			try (InputStream in = pb.getInputStream();) {
 				byte[] bytes = new byte[2048];
@@ -56,10 +56,19 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 			// Put things back
 			System.out.flush();
 			System.setOut(old);
-			// Show what happened
-			System.out.println("Here: " + finalData.toString());
+			// Lock the thread so don't stuck
+			pb.waitFor();
 			log.info("state : " + pb.exitValue());
-			System.out.println("Process exited with: " + pb.waitFor());
+			// Show what happened
+			if (pb.exitValue() == 1) {
+				BufferedReader br = new BufferedReader(new InputStreamReader(pb.getErrorStream()));
+				String line = null;
+				System.out.println("<ERROR>");
+				while ((line = br.readLine()) != null)
+					System.out.println(line);
+				System.out.println("</ERROR>");
+			}
+			System.out.println("Final data: " + finalData.toString());
 			tempFile.deleteOnExit();
 		} catch (FileNotFoundException e) {
 			throw new ExceptionPath("File do not exist or is unreacheable: " + e.getMessage() + e.getStackTrace());
@@ -68,6 +77,7 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 		} catch (InterruptedException e) {
 			throw new ExceptionPath("Thread interrupted" + e.getMessage());
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new ExceptionPath("Error on: " + e.getMessage());
 		}
 		return finalData.toString();
