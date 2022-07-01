@@ -24,7 +24,7 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 			File tempFile = File.createTempFile("node", ".js");
 			FileOutputStream fos = new FileOutputStream(tempFile);
 			log.info(tempFile.getAbsolutePath());
-			StringBuilder expressionBuilder = new StringBuilder("var jsonata = require(\"jsonata\");");
+			StringBuilder expressionBuilder = new StringBuilder("var jsonata = require(\"/usr/local/lib/node_modules/jsonata\");");
 			expressionBuilder.append(System.lineSeparator());
 			expressionBuilder.append("var data=" + payload + ";");
 			expressionBuilder.append(System.lineSeparator());
