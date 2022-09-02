@@ -25,7 +25,7 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 			FileOutputStream fos = new FileOutputStream(tempFile);
 			log.info(tempFile.getAbsolutePath());
 //			Add this: \"/usr/local/lib/node_modules/jsonata\" so the app can work on docker image or add: \"jsonata\" so the app work on local
-			StringBuilder expressionBuilder = new StringBuilder("var jsonata = require(\"/usr/local/lib/node_modules/jsonata\");");
+			StringBuilder expressionBuilder = new StringBuilder("var jsonata = require(\"jsonata\");");
 			expressionBuilder.append(System.lineSeparator());
 			expressionBuilder.append("var data=" + payload + ";");
 			expressionBuilder.append(System.lineSeparator());

@@ -28,6 +28,8 @@ class TestingMainFunctions {
 //	Transforming sample data to base64
 	byte[] encodedBytes = Base64.getEncoder().encode(sampleData.getBytes());
 	
+	String expressionSample = testingMain.nodeJsToJSONprocessor(sampleData, "$substring(FirstName, 2, 3) & $lowercase(SecondName) & $replace(LastName, \"Perez\", \"Cortes\") & $substringBefore(Age, \" years\")");
+	
 	@BeforeEach
 	void setUp() throws Exception {
 	}
@@ -44,5 +46,19 @@ class TestingMainFunctions {
 		//String payload = new String(decodedString);
 		assertEquals("\"manarreolaCortes25\"" , dataSample.trim());
 	}
+	
+//	@Test
+//	void testProcessTransformation() {
+//		
+//		ProcessorProperties properties = new ProcessorProperties();
+//		properties.setExpression(expressionSample);
+//		ProcessorStream stream = new ProcessorStream(properties);
+//		
+//		
+//		stream.processTransformation();
+//	}
+	
+	
+	
 
 }
