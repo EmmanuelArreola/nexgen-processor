@@ -1,5 +1,5 @@
 [![N|Solid](https://cloudgensys.com/cg-demo/wp-content/uploads/2019/05/CG-Logo-01.png)](https://www.cloudgensys.com/)
-# Nexgen-Processor  (Mapping Processor)
+# N3xgen-Processor  (Mapping Processor)
 ## 1. Introduction
 Processor application developed to apply JSONata Lenguaje query expressions on JSON payloads by creating a temp javascript file and using the JSONata package.
 
@@ -192,4 +192,4 @@ Also for the method we will use the same data sample just like the below example
     ```
         { "name": "Fred Smith", "mobile": "077 7700 1234" }
     ```
-You can use the JSONata official tool to validate your expression and your result on this page: https://try.jsonata.org/# nexgen-processor
+You can use the JSONata official tool to validate your expression and your result on this page: https://try.jsonata.org/
