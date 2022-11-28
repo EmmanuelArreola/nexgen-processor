@@ -1,0 +1,7 @@
+com\n3xgen\n3xgenprocessor\bean\ProcessorStream.class
+com\n3xgen\n3xgenprocessor\bean\ExceptionPath.class
+com\n3xgen\n3xgenprocessor\bean\ProcessorProperties.class
+com\n3xgen\n3xgenprocessor\service\ProcessorNodeJs.class
+com\n3xgen\n3xgenprocessor\service\ProcessorNodeJsImpl.class
+META-INF\spring-configuration-metadata.json
+com\n3xgen\n3xgenprocessor\N3xgenProcessorApplication.class

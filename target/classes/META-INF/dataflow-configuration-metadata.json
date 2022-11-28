@@ -1,0 +1,17 @@
+{
+	"groups": [
+		{
+			"name": "processor.params",
+			"type": "com.n3xgen.n3xgenprocessor.bean.ProcessorProperties",
+			"sourceType": "com.n3xgen.n3xgenprocessor.bean.ProcessorProperties"
+		}
+	],
+	"properties": [
+		{
+			"name": "processor.params.expression",
+			"type": "java.lang.String",
+			"sourceType": "com.n3xgen.n3xgenprocessor.bean.ProcessorProperties",
+			"defaultValue": ""
+		}
+	]
+}

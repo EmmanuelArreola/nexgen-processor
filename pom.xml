@@ -64,6 +64,15 @@
 			<classifier>test-binder</classifier>
 			<type>test-jar</type>
 		</dependency>
+		<dependency>
+			<groupId>root</groupId>
+			<artifactId>sample</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/json-validator-cg-lib-0.0.1-SNAPSHOT.jar</systemPath>
+		</dependency>
+
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
