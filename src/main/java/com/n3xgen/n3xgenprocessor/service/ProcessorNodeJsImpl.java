@@ -20,6 +20,15 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 		// Create a stream to hold the output
 		ByteArrayOutputStream finalData = new ByteArrayOutputStream();
 		log.info("Starting expression");
+		//Add Jsonvalidator 
+		log.info("payload"+payload);
+		String in_schema="{}";
+
+		JsonSchemaValidator wrapperFromLocalResources = new JsonSchemaValidator();
+
+		List<JsonNode> a =  wrapperFromLocalResources.jsonValidator(in_schema,payload);
+		System.out.println(a.size() == 0 ? "true" : a);
+		
 		try {
 			File tempFile = File.createTempFile("node", ".js");
 			FileOutputStream fos = new FileOutputStream(tempFile);
