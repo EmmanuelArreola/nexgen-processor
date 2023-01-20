@@ -9,8 +9,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.List;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.n3xgen.n3xgenprocessor.bean.ExceptionPath;
+import com.n3xgex.jsonSchemaValidator.JsonSchemaValidator;
 
 public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ProcessorNodeJsImpl.class);

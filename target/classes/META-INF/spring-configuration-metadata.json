@@ -10,7 +10,6 @@
     {
       "name": "processor.params.expression",
       "type": "java.lang.String",
-      "description": "A description for 'n3xgen.expression",
       "sourceType": "com.n3xgen.n3xgenprocessor.bean.ProcessorProperties"
     }
   ],
