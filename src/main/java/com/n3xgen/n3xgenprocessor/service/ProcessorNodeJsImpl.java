@@ -9,8 +9,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.List;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.n3xgen.n3xgenprocessor.bean.ExceptionPath;
+import com.n3xgex.jsonSchemaValidator.JsonSchemaValidator;
 
 public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ProcessorNodeJsImpl.class);
@@ -20,6 +23,15 @@ public class ProcessorNodeJsImpl implements ProcessorNodeJs {
 		// Create a stream to hold the output
 		ByteArrayOutputStream finalData = new ByteArrayOutputStream();
 		log.info("Starting expression");
+		//Add Jsonvalidator 
+		log.info("payload"+payload);
+		String in_schema="{}";
+
+		JsonSchemaValidator wrapperFromLocalResources = new JsonSchemaValidator();
+
+		List<JsonNode> a =  wrapperFromLocalResources.jsonValidator(in_schema,payload);
+		System.out.println(a.size() == 0 ? "true" : a);
+		
 		try {
 			File tempFile = File.createTempFile("node", ".js");
 			FileOutputStream fos = new FileOutputStream(tempFile);
